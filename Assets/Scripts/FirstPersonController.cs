@@ -10,7 +10,9 @@ public class FirstPersonController : MonoBehaviour
     private Camera playerCamera;
     private Transform cameraTransform;
     private CharacterController controller;
-
+    ///<summary> 
+    ///this controls speed
+    ///</summary>
     public float speed = 10f;
     public float gravity = -9.81f;
     public float jumpHeight = 4f;
@@ -22,7 +24,9 @@ public class FirstPersonController : MonoBehaviour
     float xRotation = 0f;
     #endregion
 
-
+    /// <summary>
+    /// 
+    /// </summary>
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -36,9 +40,15 @@ public class FirstPersonController : MonoBehaviour
     void Update()
     {
         MouseLook();
+
         PlayerMovement();
     }
 
+/// <summary>
+/// 
+/// </summary>
+/// <param name="x"></param>
+/// <returns></returns>
     void PlayerMovement()
     {
         if (controller.isGrounded && velocity.y < 0)
@@ -54,15 +64,15 @@ public class FirstPersonController : MonoBehaviour
         Vector3 move = (transform.right * x) + (transform.forward * z);
         controller.Move(move * speed * Time.deltaTime);
 
-        //gravity
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
-
         //jumping
-        if(Input.GetButtonDown("Jump") && controller.isGrounded)
+        if (Input.GetButtonDown("Jump") && controller.isGrounded)
         {
             velocity.y += Mathf.Sqrt(jumpHeight * -1 * gravity);
         }
+
+        //gravity
+        velocity.y += gravity * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
     }    
 
     void MouseLook()
