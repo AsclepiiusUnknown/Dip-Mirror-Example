@@ -131,7 +131,7 @@ MonoBehaviour:
   gravity: -9.81
   jumpHeight: 4
   velocity: {x: 0, y: 0, z: 0}
-  mouseSensitivity: 100
+  mouseSensitivity: 5
 --- !u!1 &6089563122697887777
 GameObject:
   m_ObjectHideFlags: 0
